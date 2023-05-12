@@ -15,4 +15,6 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 ## CDK-NAG
 
+[Learn more](https://aws.amazon.com/blogs/devops/manage-application-security-and-compliance-with-the-aws-cloud-development-kit-and-cdk-nag/)
+
 Run `cdk synth` to see the IaC errors output 
