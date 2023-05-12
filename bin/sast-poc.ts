@@ -2,8 +2,11 @@
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { SastPocStack } from '../lib/sast-poc-stack';
+import {Aspects} from "aws-cdk-lib";
+import {AwsSolutionsChecks} from "cdk-nag";
 
 const app = new cdk.App();
+Aspects.of(app).add(new AwsSolutionsChecks());
 new SastPocStack(app, 'SastPocStack', {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,

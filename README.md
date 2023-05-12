@@ -1,6 +1,6 @@
-# Welcome to your CDK TypeScript project
+# SAST-POC
 
-This is a blank project for CDK development with TypeScript.
+This is a sample project based on CDK with SAST
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
@@ -12,3 +12,7 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 * `cdk deploy`      deploy this stack to your default AWS account/region
 * `cdk diff`        compare deployed stack with current state
 * `cdk synth`       emits the synthesized CloudFormation template
+
+## CDK-NAG
+
+Run `cdk synth` to see the IaC errors output 
