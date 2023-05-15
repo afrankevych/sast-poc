@@ -1,0 +1,6 @@
+name: 'Test Custom GitHub Action'
+description: 'Test Custom GitHub Action'
+# TODO find how to forward script output to github action output
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

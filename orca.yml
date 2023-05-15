@@ -1,0 +1,6 @@
+project-key: sast-poc
+format:
+  - json
+  - cli
+output: results/
+console-output: cli

@@ -6,7 +6,7 @@ import {Aspects} from "aws-cdk-lib";
 import {AwsSolutionsChecks} from "cdk-nag";
 
 const app = new cdk.App();
-Aspects.of(app).add(new AwsSolutionsChecks());
+Aspects.of(app).add(new AwsSolutionsChecks({verbose: true}));
 new SastPocStack(app, 'SastPocStack', {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
