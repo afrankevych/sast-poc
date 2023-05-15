@@ -3,6 +3,7 @@ FROM node:18-alpine3.17
 WORKDIR /app
 
 # Installs Orca Security CLI scanning tool
+RUN apk add curl
 RUN curl -sfL 'https://raw.githubusercontent.com/orcasecurity/orca-cli/main/install.sh' | bash -s
 
 # github action runner executes the action container with the repository source
