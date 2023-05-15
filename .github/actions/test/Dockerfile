@@ -1,5 +1,5 @@
 FROM node:18-alpine3.17
 WORKDIR /app
 RUN ls
-RUN #chmod +x ./bin/scan.sh
-#CMD ["./bin/scan.sh"]
+RUN #/github/workspace/bin/scan.sh
+CMD ["/github/workspace/bin/scan.sh"]
