@@ -6,4 +6,4 @@ RUN ls
 
 RUN #/github/workspace/bin/scan.sh
 
-CMD ["/github/workspace/bin/scan.sh"]
+CMD ["sh /github/workspace/bin/scan.sh"]
