@@ -62,10 +62,10 @@ export class SastPocStack extends cdk.Stack {
       }]
     });
     const region = cdk.Stack.of(this).region;
-    const arn = `arn:aws:apigateway:${region}::/restapis/${gatewayToLambda.apiGateway.restApiId}/stages/${gatewayToLambda.apiGateway.deploymentStage.stageName}`;
+    const apiGatewayArn = `arn:aws:apigateway:${region}::/restapis/${gatewayToLambda.apiGateway.restApiId}/stages/${gatewayToLambda.apiGateway.deploymentStage.stageName}`;
     new CfnWebACLAssociation(this, "WebAclAssociation", {
       webAclArn: cfnWebACL.attrArn,
-      resourceArn: arn,
+      resourceArn: apiGatewayArn,
     });
   }
 }
