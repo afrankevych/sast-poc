@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@aws-solutions-constructs/aws-apigateway-lambda": "^2.39.0",
-    "aws-cdk-lib": "2.79.1",
+    "aws-cdk-lib": "^2.79.1",
     "cdk-nag": "^2.27.3",
     "constructs": "^10.0.0",
     "source-map-support": "^0.5.21"
