@@ -9,20 +9,20 @@ export class SastPocStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    // NagSuppressions.addStackSuppressions(this, [
-    //   {
-    //     id: 'AwsSolutions-IAM5',
-    //     reason: 'The default policy provided by aws-solutions-constructs is ok'
-    //   },
-    //   {
-    //     id: 'AwsSolutions-APIG2',
-    //     reason: 'The validation is implemented in the lambda logic'
-    //   },
-    //   {
-    //     id: 'AwsSolutions-COG4',
-    //     reason: 'This API is public'
-    //   },
-    // ])
+    NagSuppressions.addStackSuppressions(this, [
+      {
+        id: 'AwsSolutions-IAM5',
+        reason: 'The default policy provided by aws-solutions-constructs is ok'
+      },
+      {
+        id: 'AwsSolutions-APIG2',
+        reason: 'The validation is implemented in the lambda logic'
+      },
+      {
+        id: 'AwsSolutions-COG4',
+        reason: 'This API is public'
+      },
+    ])
     const gatewayToLambda = new ApiGatewayToLambda(this, 'ApiGatewayToLambdaPattern', {
       lambdaFunctionProps: {
         runtime: Runtime.NODEJS_18_X,
@@ -31,41 +31,41 @@ export class SastPocStack extends cdk.Stack {
       }
     });
 
-    // const cfnWebACL = new CfnWebACL(this, 'MyCDKWebAcl', {
-    //   defaultAction: {
-    //     allow: {}
-    //   },
-    //   scope: 'REGIONAL',
-    //   visibilityConfig: {
-    //     cloudWatchMetricsEnabled: true,
-    //     metricName: 'MetricForWebACLCDK',
-    //     sampledRequestsEnabled: true,
-    //   },
-    //   name: 'MyCDKWebAcl',
-    //   rules: [{
-    //     name: 'CRSRule',
-    //     priority: 0,
-    //     statement: {
-    //       managedRuleGroupStatement: {
-    //         name: 'AWSManagedRulesCommonRuleSet',
-    //         vendorName: 'AWS'
-    //       }
-    //     },
-    //     visibilityConfig: {
-    //       cloudWatchMetricsEnabled: true,
-    //       metricName: 'MetricForWebACLCDK-CRS',
-    //       sampledRequestsEnabled: true,
-    //     },
-    //     overrideAction: {
-    //       none: {}
-    //     },
-    //   }]
-    // });
-    // const region = cdk.Stack.of(this).region;
-    // const arn = `arn:aws:apigateway:${region}::/restapis/${gatewayToLambda.apiGateway.restApiId}/stages/${gatewayToLambda.apiGateway.deploymentStage.stageName}`;
-    // new CfnWebACLAssociation(this, "WebAclAssociation", {
-    //   webAclArn: cfnWebACL.attrArn,
-    //   resourceArn: arn,
-    // });
+    const cfnWebACL = new CfnWebACL(this, 'MyCDKWebAcl', {
+      defaultAction: {
+        allow: {}
+      },
+      scope: 'REGIONAL',
+      visibilityConfig: {
+        cloudWatchMetricsEnabled: true,
+        metricName: 'MetricForWebACLCDK',
+        sampledRequestsEnabled: true,
+      },
+      name: 'MyCDKWebAcl',
+      rules: [{
+        name: 'CRSRule',
+        priority: 0,
+        statement: {
+          managedRuleGroupStatement: {
+            name: 'AWSManagedRulesCommonRuleSet',
+            vendorName: 'AWS'
+          }
+        },
+        visibilityConfig: {
+          cloudWatchMetricsEnabled: true,
+          metricName: 'MetricForWebACLCDK-CRS',
+          sampledRequestsEnabled: true,
+        },
+        overrideAction: {
+          none: {}
+        },
+      }]
+    });
+    const region = cdk.Stack.of(this).region;
+    const arn = `arn:aws:apigateway:${region}::/restapis/${gatewayToLambda.apiGateway.restApiId}/stages/${gatewayToLambda.apiGateway.deploymentStage.stageName}`;
+    new CfnWebACLAssociation(this, "WebAclAssociation", {
+      webAclArn: cfnWebACL.attrArn,
+      resourceArn: arn,
+    });
   }
 }
